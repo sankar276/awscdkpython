@@ -2,10 +2,9 @@
 
 from aws_cdk import core
 
-from mycdkproject.mycdkproject_stack import MycdkprojectStack
-
-
+from mycdkproject.vpc_stack import VPCStack
+from mycdkproject.eks_stack import EKSStack
 app = core.App()
-MycdkprojectStack(app, "mycdkproject")
-
+vpc_stack = VPCStack(app, "mycdkproject")
+eks_stack = EKSStack(app,'eks',vpc=vpc_stack.vpc)
 app.synth()
